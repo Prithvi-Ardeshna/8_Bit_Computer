@@ -1,0 +1,73 @@
+Opcode  Mnemonic  HEXVALUE  Description
+------  --------  --------  -----------
+0000    NOP	      0         No operation
+0001    LDA	      1        (LOAD A)Load A reg with contents of given address
+0010    ADD	      2         Add contents of given address to A reg
+0011    SUB	      3         Subtract contents of given address from A reg
+0100    STA	      4         (STORE A)Store contents of A reg at given address
+0101    LDI    	      5         (LOAD A IMMEDIATE)Load A reg with given value
+0110    JMP	      6         Jump to given address
+0111    JC            7         Jump to given address is Carry Flag is set
+1000    JZ	      8         Jump to given address is Zero Flag is set
+1001    N/A	      9         N/A
+1010    N/A    	      a         N/A
+1011    N/A	      b         N/A
+1100    N/A	      c         N/A
+1101    N/A	      d         N/A
+1110    OUT    	      e         Load Out reg with contents of A reg
+1111    HLT	      f         Halt the clock
+
+
+
+add swap compare addimmideate subimmideate
+
+
+        CF ZF   instruction     step    HLT MI RI RO IO II AI AO   EO SU BI OI CE CO J FI
+FETCH   X  X    X X X X         0 0 0    0  1  0  0  0  0  0  0    0  0  0  0  0  1  0  0 
+        X  X    X X X X         0 0 1    0  0  0  1  0  1  0  0    0  0  0  0  1  0  0  0 
+
+NOP     X  X    0 0 0 0         0 1 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0 
+        X  X    0 0 0 0         0 1 1    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+        X  X    0 0 0 0         1 0 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+
+LDA     X  X    0 0 0 1         0 1 0    0  1  0  0  1  0  0  0    0  0  0  0  0  0  0  0 
+        X  X    0 0 0 1         0 1 1    0  0  0  1  0  0  1  0    0  0  0  0  0  0  0  0
+        X  X    0 0 0 1         1 0 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+
+ADD     X  X    0 0 1 0         0 1 0    0  1  0  0  1  0  0  0    0  0  0  0  0  0  0  0 
+        X  X    0 0 1 0         0 1 1    0  0  0  1  0  0  0  0    0  0  1  0  0  0  0  0
+        X  X    0 0 1 0         1 0 0    0  0  0  0  0  0  1  0    1  0  0  0  0  0  0  1
+
+SUB     X  X    0 0 1 1         0 1 0    0  1  0  0  1  0  0  0    0  0  0  0  0  0  0  0 
+        X  X    0 0 1 1         0 1 1    0  0  0  1  0  0  0  0    0  0  1  0  0  0  0  0
+        X  X    0 0 1 1         1 0 0    0  0  0  0  0  0  1  0    1  1  0  0  0  0  0  1
+
+STA     X  X    0 1 0 0         0 1 0    0  1  0  0  1  0  0  0    0  0  0  0  0  0  0  0 
+        X  X    0 1 0 0         0 1 1    0  0  1  0  0  0  0  1    0  0  0  0  0  0  0  0
+        X  X    0 1 0 0         1 0 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+
+LDI     X  X    0 1 0 1         0 1 0    0  0  0  0  1  0  1  0    0  0  0  0  0  0  0  0 
+        X  X    0 1 0 1         0 1 1    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+        X  X    0 1 0 1         1 0 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+
+JMP     X  X    0 1 1 0         0 1 0    0  0  0  0  1  0  0  0    0  0  0  0  0  0  1  0 
+        X  X    0 1 1 0         0 1 1    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+        X  X    0 1 1 0         1 0 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+
+JC      0  X    0 1 1 1         0 1 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0 
+        1  X    0 1 1 1         0 1 0    0  0  0  0  1  0  0  0    0  0  0  0  0  0  1  0 
+        X  X    0 1 1 1         0 1 1    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+        X  X    0 1 1 1         1 0 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+
+JZ      X  0    1 0 0 0         0 1 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+        X  1    1 0 0 0         0 1 0    0  0  0  0  1  0  0  0    0  0  0  0  0  0  1  0
+        X  X    1 0 0 0         0 1 1    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+        X  X    1 0 0 0         1 0 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+        
+OUT     X  X    1 1 1 0         0 1 0    0  0  0  0  0  0  0  1    0  0  0  0  0  0  0  0
+        X  X    1 1 1 0         0 1 1    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+        X  X    1 1 1 0         1 0 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0              
+               
+HLT     X  X    1 1 1 1         0 1 0    1  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+        X  X    1 1 1 1         0 1 1    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0
+        X  X    1 1 1 1         1 0 0    0  0  0  0  0  0  0  0    0  0  0  0  0  0  0  0               
