@@ -79,6 +79,21 @@ This project includes **two versions** of the 8-bit CPU:
    **Instruction Register**         
    <img width="774" height="396" alt="image" src="https://github.com/user-attachments/assets/bc43efe5-b32e-4488-bab2-709f2b08f315" />
 
+
+
+   **Step Counter**                    
+   <img width="704" height="212" alt="image" src="https://github.com/user-attachments/assets/c25214a3-bbaa-464c-950d-9be65a59ca5c" />
+
+
+
+   **Zero Flag**                    
+   <img width="497" height="188" alt="image" src="https://github.com/user-attachments/assets/8e526133-6a47-4719-84b9-9fcdaaea4d79" />
+
+
+
+   **Flags**                         
+   <img width="715" height="318" alt="image" src="https://github.com/user-attachments/assets/3ad35ffe-0282-4bcc-9fba-3c3dc1914b05" />
+
 ---
 
 ## Instruction Set
