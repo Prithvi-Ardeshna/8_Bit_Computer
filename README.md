@@ -19,8 +19,9 @@ This project includes **two versions** of the 8-bit CPU:
 2. **Full Version (with control logic):**  
    - Automated instruction execution using a control logic ROM.
    - Supports a simple assembly-like instruction set.
-  
-     
+
+     <img width="1186" height="911" alt="image" src="https://github.com/user-attachments/assets/a5dcb3b7-ba05-4d02-9acb-df1d8733960e" />
+
 
 ---
 
@@ -35,36 +36,48 @@ This project includes **two versions** of the 8-bit CPU:
 
 ## Components
 
-**Clock**
-
-<img width="904" height="404" alt="image" src="https://github.com/user-attachments/assets/e5a72c3c-6a1b-4e36-9cb1-69ba40438fce" />
-
-
-
-**Program Counter**
-
-<img width="948" height="293" alt="image" src="https://github.com/user-attachments/assets/f7e21162-842b-48ac-b471-e79934c08868" />
+   **Clock**               
+   <img width="904" height="404" alt="image" src="https://github.com/user-attachments/assets/e5a72c3c-6a1b-4e36-9cb1-69ba40438fce" />
 
 
 
-**A Register**
-
-<img width="878" height="292" alt="image" src="https://github.com/user-attachments/assets/006e6363-b658-42a6-9353-5d56b505313e" />
-
-
-
-**B Register**
-
-<img width="1186" height="911" alt="image" src="https://github.com/user-attachments/assets/a5dcb3b7-ba05-4d02-9acb-df1d8733960e" />
+   **Program Counter**
+   <img width="948" height="293" alt="image" src="https://github.com/user-attachments/assets/f7e21162-842b-48ac-b471-e79934c08868" />
 
 
 
-**ALU**
-
-<img width="945" height="355" alt="image" src="https://github.com/user-attachments/assets/b4ad817b-a2e7-4682-8e0d-ab7170469131" />
-
+   **A Register**        
+   <img width="878" height="292" alt="image" src="https://github.com/user-attachments/assets/006e6363-b658-42a6-9353-5d56b505313e" />
 
 
+
+   **B Register**     
+   <img width="822" height="292" alt="image" src="https://github.com/user-attachments/assets/8905d1f4-d6c7-45d9-ba39-6f348f2c39cf" />
+
+
+
+   **ALU**             
+   <img width="945" height="355" alt="image" src="https://github.com/user-attachments/assets/b4ad817b-a2e7-4682-8e0d-ab7170469131" />
+
+
+
+   **Output Register**                       
+   <img width="677" height="192" alt="image" src="https://github.com/user-attachments/assets/9f0efa36-28c1-48c0-ba09-3e8f71964485" />
+
+
+
+   **Memory Address Register**               
+   <img width="683" height="262" alt="image" src="https://github.com/user-attachments/assets/9941cfd9-3a1f-4137-bc5c-da43ab6e5cca" />
+
+
+
+   **RAM**                      
+   <img width="715" height="950" alt="image" src="https://github.com/user-attachments/assets/205ba17c-6cf8-4dcd-aa1c-3146dd1e161d" />
+
+
+
+   **Instruction Register**         
+   <img width="774" height="396" alt="image" src="https://github.com/user-attachments/assets/bc43efe5-b32e-4488-bab2-709f2b08f315" />
 
 ---
 
