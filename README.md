@@ -1,4 +1,4 @@
-# 8-Bit Computer 💻
+# 8-Bit Computer 
 
 This project is a simulation of an 8-bit computer built using [Logisim Evolution](https://github.com/reds-heig/logisim-evolution), inspired by [Ben Eater's YouTube series](https://www.youtube.com/playlist?list=PLowKtXNTBypGqImE405J2565dvjafglHU).  
 It demonstrates the basic architecture and functioning of a simple CPU, including a version with full control logic and basic instruction set support.
@@ -114,13 +114,126 @@ This project includes **two versions** of the 8-bit CPU:
 
 ---
 
-## Example
+## Examples
 
+1) Using basic version to add two numbers
+
+   Program:
+   | Assembly | Memory Address | Machine Code |
+   |----------|----------------|--------------|
+   | LDA 14   | `0000`         | `0001 1110`  |
+   | ADD 15   | `0001`         | `0010 1111`  |
+   | OUT      | `0010`         | `1110 0000`  |
+   |          |  ...           |              |
+   |          | `1110`         | `0001 1100`  |
+   |          | `1111`         | `0000 1110`  |
+
+   Micro Instructions:
+
+   |    | LDA 14 |                                                   | 
+   |----|--------|---------------------------------------------------|
+   | T0 | CO MI  | Going to Memory Address '0000' (Fetch opertation) |
+   | T1 | RO II  | Transfer Data from RAM To IR                      |
+   |    | CE     | Increment PC                                      |
+   | T2 | IO MI  | Pointing Memory at address '1110'                 |
+   | T3 | RO AI  | Store data in A                                   |
+
+   |    | ADD 15 |                                                   | 
+   |----|--------|---------------------------------------------------|
+   | T0 | CO MI  | Going to Memory Address '0001' (Fetch opertation) |
+   | T1 | RO II  | Transfer Data from RAM To IR                      |
+   |    | CE     | Increment PC                                      |
+   | T2 | IO MI  | Pointing Memory at address '1111'                 |
+   | T3 | RO BI  | Store data in B                                   |
+   | T4 | EO AI  | Calculate sum of A and B and store it in A        |
+
+   |    | LDA 14 |                                                                  |
+   |----|--------|------------------------------------------------------------------|
+   | T0 | CO MI  | Going to Memory Address '0010' (Fetch opertation)                |
+   | T1 | RO II  | Transfer Data from RAM To IR                                     |
+   |    | CE     | Increment PC                                                     |
+   | T2 | AO OI  | data stored in A is transfered to Output Register for displaying |
+
+
+
+2) Getting Multiples of 3
+   
+   Program:
+   | Assembly  | Memory Address | Machine Code |
+   |-----------|----------------|--------------|
+   | 0: LDI 03 | `0000`         | `0101 0011`  |
+   | 1: STA 15 | `0001`         | `0100 1111`  |
+   | 2: LDI 00 | `0010`         | `0101 0000`  |
+   | 3: ADD 15 | `0011`         | `0010 1111`  |
+   | 4: OUT    | `0100`         | `1110 0000`  |
+   | 5: JMP 03 | `0101`         | `0110 0011`  |
+
+
+
+3) Counting Up and Down
+
+   Program:
+   | Assembly   | Memory Address | Machine Code |
+   |------------|----------------|--------------|
+   | 00: OUT    | `0000`         | `1110 0000`  |
+   | 01: ADD 15 | `0001`         | `0010 1111`  |
+   | 02: JC 04  | `0010`         | `0111 0100`  |
+   | 03: JMP 00 | `0011`         | `0110 0000`  |
+   | 04: SUB 15 | `0100`         | `0011 1111`  |
+   | 05: OUT    | `0101`         | `111O OOOO`  |
+   | 06: JZ 00  | `0110`         | `1000 0000`  |
+   | 07: JMP 04 | `0111`         | `0110 0100`  |
+   | 15: 25     | `1111`         | `0011 0010`  |
+
+
+
+4) Multipling x & y using conditional jump
+
+   Pseudocode:\
+   product = 0\
+   loop until x is 0\
+   &emsp;load x\
+   &emsp;subtract 1\
+   &emsp;store x\
+   &emsp;load product\
+   &emsp;add y\
+   &emsp;store product\
+   output product
+
+   Assembly:\
+   TOP:\
+   &emsp;LDA x\
+   &emsp;SUB 1\
+   &emsp;JC CONTINUE\
+   &emsp;LDA product\
+   &emsp;OUT\
+   &emsp;HLT\
+   CONTINUE:\
+   &emsp;STA x\
+   &emsp;LDA product\
+   &emsp;ADD y\
+   &emsp;STA product\
+   &emsp;JMP TOP
+
+   Program:
+   | Assembly    | Memory Address | Machine Code |
+   |-------------|----------------|--------------|
+   | 00: LDA 14  | `0000`         | `0001 1110`  |
+   | 01: SUB 12  | `0001`         | `0011 1100`  |
+   | 02: JC 06   | `0010`         | `0111 0110`  |
+   | 03: LDA 13  | `0011`         | `0001 1101`  |
+   | 04: OUT     | `0100`         | `1110 0000`  |
+   | 05: HLT     | `0101`         | `1111 0000`  |
+   | 06: STA 14  | `0110`         | `0100 1110`  |
+   | 07: LDA 13  | `0111`         | `0001 1101`  |
+   | 08: ADD 15  | `1000`         | `0010 1111`  |
+   | 09: STA 13  | `1001`         | `0100 1101`  |
+   | 10: JMP 00  | `1010`         | `0110 0000`  |
+   | 11:         | `1011`         |              |
+   | 12: 1       | `1100`         | `0000 0001`  |
+   | 13: product | `1101`         | `0000 0000`  |
+   | 14: x       | `1110`         |              |
+   | 15: y       | `1111`         |              |
+   
 
 ---
-
-## ToDo
-
-Add swap, compare, add immediate and sub immediate instruction
-Add images and videos
-Add examples
