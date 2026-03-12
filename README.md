@@ -147,7 +147,7 @@ This project includes **two versions** of the 8-bit CPU:
    | T3 | RO BI  | Store data in B                                   |
    | T4 | EO AI  | Calculate sum of A and B and store it in A        |
 
-   |    | LDA 14 |                                                                  |
+   |    | OUT    |                                                                  |
    |----|--------|------------------------------------------------------------------|
    | T0 | CO MI  | Going to Memory Address '0010' (Fetch opertation)                |
    | T1 | RO II  | Transfer Data from RAM To IR                                     |
